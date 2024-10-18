@@ -1,6 +1,8 @@
 -- Merging decision tree log ---
 application
 INJECTED from C:\Projects\Visual Studio Code\care_connect\android\app\src\main\AndroidManifest.xml:2:5-33:19
+MERGED from [:image_picker_android] C:\Projects\Visual Studio Code\care_connect\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:10:5-34:19
+MERGED from [:image_picker_android] C:\Projects\Visual Studio Code\care_connect\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:10:5-34:19
 MERGED from [androidx.window:window:1.2.0] C:\Users\isaac\.gradle\caches\transforms-3\61b646fe49f67281254a84f48ad4fbfb\transformed\jetified-window-1.2.0\AndroidManifest.xml:22:5-29:19
 MERGED from [androidx.window:window:1.2.0] C:\Users\isaac\.gradle\caches\transforms-3\61b646fe49f67281254a84f48ad4fbfb\transformed\jetified-window-1.2.0\AndroidManifest.xml:22:5-29:19
 MERGED from [androidx.core:core:1.13.1] C:\Users\isaac\.gradle\caches\transforms-3\9e62d3c3958ec4b8b9fb699b53380c94\transformed\core-1.13.1\AndroidManifest.xml:28:5-89
@@ -23,16 +25,18 @@ INJECTED from C:\Projects\Visual Studio Code\care_connect\android\app\src\main\A
 INJECTED from C:\Projects\Visual Studio Code\care_connect\android\app\src\main\AndroidManifest.xml:1:1-45:12
 INJECTED from C:\Projects\Visual Studio Code\care_connect\android\app\src\main\AndroidManifest.xml:1:1-45:12
 MERGED from C:\Projects\Visual Studio Code\care_connect\android\app\src\main\AndroidManifest.xml:1:1-45:12
+MERGED from [:image_picker_android] C:\Projects\Visual Studio Code\care_connect\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-36:12
+MERGED from [:flutter_plugin_android_lifecycle] C:\Projects\Visual Studio Code\care_connect\build\flutter_plugin_android_lifecycle\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-9:12
 MERGED from [androidx.fragment:fragment:1.7.1] C:\Users\isaac\.gradle\caches\transforms-3\f65cd6c525e9500e3617435c090a704b\transformed\fragment-1.7.1\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.activity:activity:1.9.2] C:\Users\isaac\.gradle\caches\transforms-3\1c28da5bfd5f3a50557641a159e50821\transformed\jetified-activity-1.9.2\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.window:window:1.2.0] C:\Users\isaac\.gradle\caches\transforms-3\61b646fe49f67281254a84f48ad4fbfb\transformed\jetified-window-1.2.0\AndroidManifest.xml:17:1-31:12
 MERGED from [androidx.window:window-java:1.2.0] C:\Users\isaac\.gradle\caches\transforms-3\1cd9c35071ddcad09eaefb12b3288a94\transformed\jetified-window-java-1.2.0\AndroidManifest.xml:17:1-21:12
-MERGED from [androidx.activity:activity:1.8.1] C:\Users\isaac\.gradle\caches\transforms-3\def63b78721e525ecde58c90680a5d60\transformed\jetified-activity-1.8.1\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.loader:loader:1.0.0] C:\Users\isaac\.gradle\caches\transforms-3\545db1f7c02ae97b38f25da382946ac6\transformed\loader-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.viewpager:viewpager:1.0.0] C:\Users\isaac\.gradle\caches\transforms-3\ff8b76776081ef9071dc6c6e3fe41790\transformed\viewpager-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.lifecycle:lifecycle-livedata-core-ktx:2.7.0] C:\Users\isaac\.gradle\caches\transforms-3\1a5f84d4480fbd840964be70e6192491\transformed\jetified-lifecycle-livedata-core-ktx-2.7.0\AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.lifecycle:lifecycle-livedata:2.7.0] C:\Users\isaac\.gradle\caches\transforms-3\689b97724a28012abcb00f7d12412831\transformed\lifecycle-livedata-2.7.0\AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.7.0] C:\Users\isaac\.gradle\caches\transforms-3\b451ad8c7efe1240ff041c19d5deb830\transformed\lifecycle-viewmodel-2.7.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.7.0] C:\Users\isaac\.gradle\caches\transforms-3\d6b4e53a8c6ab37207ed7eb37f8bcce5\transformed\lifecycle-livedata-core-2.7.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.7.0] C:\Users\isaac\.gradle\caches\transforms-3\b451ad8c7efe1240ff041c19d5deb830\transformed\lifecycle-viewmodel-2.7.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.7.0] C:\Users\isaac\.gradle\caches\transforms-3\e7e6e76c70d2e2f833360e1375e5d984\transformed\jetified-lifecycle-viewmodel-savedstate-2.7.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.core:core-ktx:1.13.1] C:\Users\isaac\.gradle\caches\transforms-3\923b92f6f2cd7c853ec90cd1fafd714d\transformed\jetified-core-ktx-1.13.1\AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.customview:customview:1.0.0] C:\Users\isaac\.gradle\caches\transforms-3\6abca324803b19eeefe203fa4a55b6a9\transformed\customview-1.0.0\AndroidManifest.xml:17:1-22:12
@@ -40,14 +44,15 @@ MERGED from [androidx.core:core:1.13.1] C:\Users\isaac\.gradle\caches\transforms
 MERGED from [androidx.lifecycle:lifecycle-runtime:2.7.0] C:\Users\isaac\.gradle\caches\transforms-3\f46889076561df891a6f54cc67c5e4fc\transformed\lifecycle-runtime-2.7.0\AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.lifecycle:lifecycle-process:2.7.0] C:\Users\isaac\.gradle\caches\transforms-3\62d3d8bb0e9507fe9c8555e8b06ab135\transformed\jetified-lifecycle-process-2.7.0\AndroidManifest.xml:17:1-35:12
 MERGED from [androidx.savedstate:savedstate:1.2.1] C:\Users\isaac\.gradle\caches\transforms-3\119ff4afd1afb18f1386a86b48edd0e1\transformed\jetified-savedstate-1.2.1\AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.annotation:annotation-experimental:1.4.0] C:\Users\isaac\.gradle\caches\transforms-3\b1f08621f1eda8df2590e07f66e97486\transformed\jetified-annotation-experimental-1.4.0\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.exifinterface:exifinterface:1.3.7] C:\Users\isaac\.gradle\caches\transforms-3\d829d7aa9561ec2ea369e5e12db6ba14\transformed\exifinterface-1.3.7\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\isaac\.gradle\caches\transforms-3\78c4db09434f467a30296cee09258da8\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:17:1-55:12
 MERGED from [androidx.startup:startup-runtime:1.1.1] C:\Users\isaac\.gradle\caches\transforms-3\301cd88c528d436a57bf3b6a25551561\transformed\jetified-startup-runtime-1.1.1\AndroidManifest.xml:17:1-33:12
 MERGED from [androidx.tracing:tracing:1.2.0] C:\Users\isaac\.gradle\caches\transforms-3\2e3e62dee98a63f7aa03f5cac9e8a63d\transformed\jetified-tracing-1.2.0\AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.arch.core:core-runtime:2.2.0] C:\Users\isaac\.gradle\caches\transforms-3\a3115a4b3a24485a5c38aecb02bb1f2e\transformed\core-runtime-2.2.0\AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\isaac\.gradle\caches\transforms-3\b145475e34098a80a0d973b8b014c297\transformed\versionedparcelable-1.1.1\AndroidManifest.xml:17:1-27:12
 MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\isaac\.gradle\caches\transforms-3\c4c580c5b5d42f9c630cc71e49018692\transformed\interpolator-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\isaac\.gradle\caches\transforms-3\b145475e34098a80a0d973b8b014c297\transformed\versionedparcelable-1.1.1\AndroidManifest.xml:17:1-27:12
+MERGED from [androidx.arch.core:core-runtime:2.2.0] C:\Users\isaac\.gradle\caches\transforms-3\a3115a4b3a24485a5c38aecb02bb1f2e\transformed\core-runtime-2.2.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.window.extensions.core:core:1.0.0] C:\Users\isaac\.gradle\caches\transforms-3\d7186cf5ef1a524c9a8aab9f1e5f3afd\transformed\jetified-core-1.0.0\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.annotation:annotation-experimental:1.4.0] C:\Users\isaac\.gradle\caches\transforms-3\b1f08621f1eda8df2590e07f66e97486\transformed\jetified-annotation-experimental-1.4.0\AndroidManifest.xml:2:1-7:12
 INJECTED from C:\Projects\Visual Studio Code\care_connect\android\app\src\debug\AndroidManifest.xml:1:1-7:12
 INJECTED from C:\Projects\Visual Studio Code\care_connect\android\app\src\debug\AndroidManifest.xml:1:1-7:12
 INJECTED from C:\Projects\Visual Studio Code\care_connect\android\app\src\debug\AndroidManifest.xml:1:1-7:12
@@ -81,14 +86,18 @@ uses-sdk
 INJECTED from C:\Projects\Visual Studio Code\care_connect\android\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\Projects\Visual Studio Code\care_connect\android\app\src\main\AndroidManifest.xml
 INJECTED from C:\Projects\Visual Studio Code\care_connect\android\app\src\main\AndroidManifest.xml
+MERGED from [:image_picker_android] C:\Projects\Visual Studio Code\care_connect\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:6:5-8:41
+MERGED from [:image_picker_android] C:\Projects\Visual Studio Code\care_connect\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:6:5-8:41
+MERGED from [:flutter_plugin_android_lifecycle] C:\Projects\Visual Studio Code\care_connect\build\flutter_plugin_android_lifecycle\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
+MERGED from [:flutter_plugin_android_lifecycle] C:\Projects\Visual Studio Code\care_connect\build\flutter_plugin_android_lifecycle\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [androidx.fragment:fragment:1.7.1] C:\Users\isaac\.gradle\caches\transforms-3\f65cd6c525e9500e3617435c090a704b\transformed\fragment-1.7.1\AndroidManifest.xml:5:5-44
 MERGED from [androidx.fragment:fragment:1.7.1] C:\Users\isaac\.gradle\caches\transforms-3\f65cd6c525e9500e3617435c090a704b\transformed\fragment-1.7.1\AndroidManifest.xml:5:5-44
+MERGED from [androidx.activity:activity:1.9.2] C:\Users\isaac\.gradle\caches\transforms-3\1c28da5bfd5f3a50557641a159e50821\transformed\jetified-activity-1.9.2\AndroidManifest.xml:20:5-44
+MERGED from [androidx.activity:activity:1.9.2] C:\Users\isaac\.gradle\caches\transforms-3\1c28da5bfd5f3a50557641a159e50821\transformed\jetified-activity-1.9.2\AndroidManifest.xml:20:5-44
 MERGED from [androidx.window:window:1.2.0] C:\Users\isaac\.gradle\caches\transforms-3\61b646fe49f67281254a84f48ad4fbfb\transformed\jetified-window-1.2.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.window:window:1.2.0] C:\Users\isaac\.gradle\caches\transforms-3\61b646fe49f67281254a84f48ad4fbfb\transformed\jetified-window-1.2.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.window:window-java:1.2.0] C:\Users\isaac\.gradle\caches\transforms-3\1cd9c35071ddcad09eaefb12b3288a94\transformed\jetified-window-java-1.2.0\AndroidManifest.xml:19:5-44
 MERGED from [androidx.window:window-java:1.2.0] C:\Users\isaac\.gradle\caches\transforms-3\1cd9c35071ddcad09eaefb12b3288a94\transformed\jetified-window-java-1.2.0\AndroidManifest.xml:19:5-44
-MERGED from [androidx.activity:activity:1.8.1] C:\Users\isaac\.gradle\caches\transforms-3\def63b78721e525ecde58c90680a5d60\transformed\jetified-activity-1.8.1\AndroidManifest.xml:20:5-44
-MERGED from [androidx.activity:activity:1.8.1] C:\Users\isaac\.gradle\caches\transforms-3\def63b78721e525ecde58c90680a5d60\transformed\jetified-activity-1.8.1\AndroidManifest.xml:20:5-44
 MERGED from [androidx.loader:loader:1.0.0] C:\Users\isaac\.gradle\caches\transforms-3\545db1f7c02ae97b38f25da382946ac6\transformed\loader-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.loader:loader:1.0.0] C:\Users\isaac\.gradle\caches\transforms-3\545db1f7c02ae97b38f25da382946ac6\transformed\loader-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.viewpager:viewpager:1.0.0] C:\Users\isaac\.gradle\caches\transforms-3\ff8b76776081ef9071dc6c6e3fe41790\transformed\viewpager-1.0.0\AndroidManifest.xml:20:5-44
@@ -97,10 +106,10 @@ MERGED from [androidx.lifecycle:lifecycle-livedata-core-ktx:2.7.0] C:\Users\isaa
 MERGED from [androidx.lifecycle:lifecycle-livedata-core-ktx:2.7.0] C:\Users\isaac\.gradle\caches\transforms-3\1a5f84d4480fbd840964be70e6192491\transformed\jetified-lifecycle-livedata-core-ktx-2.7.0\AndroidManifest.xml:5:5-44
 MERGED from [androidx.lifecycle:lifecycle-livedata:2.7.0] C:\Users\isaac\.gradle\caches\transforms-3\689b97724a28012abcb00f7d12412831\transformed\lifecycle-livedata-2.7.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.lifecycle:lifecycle-livedata:2.7.0] C:\Users\isaac\.gradle\caches\transforms-3\689b97724a28012abcb00f7d12412831\transformed\lifecycle-livedata-2.7.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.7.0] C:\Users\isaac\.gradle\caches\transforms-3\b451ad8c7efe1240ff041c19d5deb830\transformed\lifecycle-viewmodel-2.7.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.7.0] C:\Users\isaac\.gradle\caches\transforms-3\b451ad8c7efe1240ff041c19d5deb830\transformed\lifecycle-viewmodel-2.7.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.7.0] C:\Users\isaac\.gradle\caches\transforms-3\d6b4e53a8c6ab37207ed7eb37f8bcce5\transformed\lifecycle-livedata-core-2.7.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.7.0] C:\Users\isaac\.gradle\caches\transforms-3\d6b4e53a8c6ab37207ed7eb37f8bcce5\transformed\lifecycle-livedata-core-2.7.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.7.0] C:\Users\isaac\.gradle\caches\transforms-3\b451ad8c7efe1240ff041c19d5deb830\transformed\lifecycle-viewmodel-2.7.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.7.0] C:\Users\isaac\.gradle\caches\transforms-3\b451ad8c7efe1240ff041c19d5deb830\transformed\lifecycle-viewmodel-2.7.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.7.0] C:\Users\isaac\.gradle\caches\transforms-3\e7e6e76c70d2e2f833360e1375e5d984\transformed\jetified-lifecycle-viewmodel-savedstate-2.7.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.7.0] C:\Users\isaac\.gradle\caches\transforms-3\e7e6e76c70d2e2f833360e1375e5d984\transformed\jetified-lifecycle-viewmodel-savedstate-2.7.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.core:core-ktx:1.13.1] C:\Users\isaac\.gradle\caches\transforms-3\923b92f6f2cd7c853ec90cd1fafd714d\transformed\jetified-core-ktx-1.13.1\AndroidManifest.xml:5:5-44
@@ -115,22 +124,24 @@ MERGED from [androidx.lifecycle:lifecycle-process:2.7.0] C:\Users\isaac\.gradle\
 MERGED from [androidx.lifecycle:lifecycle-process:2.7.0] C:\Users\isaac\.gradle\caches\transforms-3\62d3d8bb0e9507fe9c8555e8b06ab135\transformed\jetified-lifecycle-process-2.7.0\AndroidManifest.xml:21:5-44
 MERGED from [androidx.savedstate:savedstate:1.2.1] C:\Users\isaac\.gradle\caches\transforms-3\119ff4afd1afb18f1386a86b48edd0e1\transformed\jetified-savedstate-1.2.1\AndroidManifest.xml:20:5-44
 MERGED from [androidx.savedstate:savedstate:1.2.1] C:\Users\isaac\.gradle\caches\transforms-3\119ff4afd1afb18f1386a86b48edd0e1\transformed\jetified-savedstate-1.2.1\AndroidManifest.xml:20:5-44
-MERGED from [androidx.annotation:annotation-experimental:1.4.0] C:\Users\isaac\.gradle\caches\transforms-3\b1f08621f1eda8df2590e07f66e97486\transformed\jetified-annotation-experimental-1.4.0\AndroidManifest.xml:5:5-44
-MERGED from [androidx.annotation:annotation-experimental:1.4.0] C:\Users\isaac\.gradle\caches\transforms-3\b1f08621f1eda8df2590e07f66e97486\transformed\jetified-annotation-experimental-1.4.0\AndroidManifest.xml:5:5-44
+MERGED from [androidx.exifinterface:exifinterface:1.3.7] C:\Users\isaac\.gradle\caches\transforms-3\d829d7aa9561ec2ea369e5e12db6ba14\transformed\exifinterface-1.3.7\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.exifinterface:exifinterface:1.3.7] C:\Users\isaac\.gradle\caches\transforms-3\d829d7aa9561ec2ea369e5e12db6ba14\transformed\exifinterface-1.3.7\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\isaac\.gradle\caches\transforms-3\78c4db09434f467a30296cee09258da8\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:21:5-44
 MERGED from [androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\isaac\.gradle\caches\transforms-3\78c4db09434f467a30296cee09258da8\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:21:5-44
 MERGED from [androidx.startup:startup-runtime:1.1.1] C:\Users\isaac\.gradle\caches\transforms-3\301cd88c528d436a57bf3b6a25551561\transformed\jetified-startup-runtime-1.1.1\AndroidManifest.xml:21:5-23:41
 MERGED from [androidx.startup:startup-runtime:1.1.1] C:\Users\isaac\.gradle\caches\transforms-3\301cd88c528d436a57bf3b6a25551561\transformed\jetified-startup-runtime-1.1.1\AndroidManifest.xml:21:5-23:41
 MERGED from [androidx.tracing:tracing:1.2.0] C:\Users\isaac\.gradle\caches\transforms-3\2e3e62dee98a63f7aa03f5cac9e8a63d\transformed\jetified-tracing-1.2.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.tracing:tracing:1.2.0] C:\Users\isaac\.gradle\caches\transforms-3\2e3e62dee98a63f7aa03f5cac9e8a63d\transformed\jetified-tracing-1.2.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.arch.core:core-runtime:2.2.0] C:\Users\isaac\.gradle\caches\transforms-3\a3115a4b3a24485a5c38aecb02bb1f2e\transformed\core-runtime-2.2.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.arch.core:core-runtime:2.2.0] C:\Users\isaac\.gradle\caches\transforms-3\a3115a4b3a24485a5c38aecb02bb1f2e\transformed\core-runtime-2.2.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\isaac\.gradle\caches\transforms-3\b145475e34098a80a0d973b8b014c297\transformed\versionedparcelable-1.1.1\AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\isaac\.gradle\caches\transforms-3\b145475e34098a80a0d973b8b014c297\transformed\versionedparcelable-1.1.1\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\isaac\.gradle\caches\transforms-3\c4c580c5b5d42f9c630cc71e49018692\transformed\interpolator-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\isaac\.gradle\caches\transforms-3\c4c580c5b5d42f9c630cc71e49018692\transformed\interpolator-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\isaac\.gradle\caches\transforms-3\b145475e34098a80a0d973b8b014c297\transformed\versionedparcelable-1.1.1\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\isaac\.gradle\caches\transforms-3\b145475e34098a80a0d973b8b014c297\transformed\versionedparcelable-1.1.1\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.arch.core:core-runtime:2.2.0] C:\Users\isaac\.gradle\caches\transforms-3\a3115a4b3a24485a5c38aecb02bb1f2e\transformed\core-runtime-2.2.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.arch.core:core-runtime:2.2.0] C:\Users\isaac\.gradle\caches\transforms-3\a3115a4b3a24485a5c38aecb02bb1f2e\transformed\core-runtime-2.2.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.window.extensions.core:core:1.0.0] C:\Users\isaac\.gradle\caches\transforms-3\d7186cf5ef1a524c9a8aab9f1e5f3afd\transformed\jetified-core-1.0.0\AndroidManifest.xml:5:5-44
 MERGED from [androidx.window.extensions.core:core:1.0.0] C:\Users\isaac\.gradle\caches\transforms-3\d7186cf5ef1a524c9a8aab9f1e5f3afd\transformed\jetified-core-1.0.0\AndroidManifest.xml:5:5-44
+MERGED from [androidx.annotation:annotation-experimental:1.4.0] C:\Users\isaac\.gradle\caches\transforms-3\b1f08621f1eda8df2590e07f66e97486\transformed\jetified-annotation-experimental-1.4.0\AndroidManifest.xml:5:5-44
+MERGED from [androidx.annotation:annotation-experimental:1.4.0] C:\Users\isaac\.gradle\caches\transforms-3\b1f08621f1eda8df2590e07f66e97486\transformed\jetified-annotation-experimental-1.4.0\AndroidManifest.xml:5:5-44
 INJECTED from C:\Projects\Visual Studio Code\care_connect\android\app\src\debug\AndroidManifest.xml
 INJECTED from C:\Projects\Visual Studio Code\care_connect\android\app\src\debug\AndroidManifest.xml
 	android:targetSdkVersion
@@ -143,6 +154,44 @@ uses-permission#android.permission.INTERNET
 ADDED from C:\Projects\Visual Studio Code\care_connect\android\app\src\debug\AndroidManifest.xml:6:5-66
 	android:name
 		ADDED from C:\Projects\Visual Studio Code\care_connect\android\app\src\debug\AndroidManifest.xml:6:22-64
+provider#io.flutter.plugins.imagepicker.ImagePickerFileProvider
+ADDED from [:image_picker_android] C:\Projects\Visual Studio Code\care_connect\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:11:9-19:20
+	android:grantUriPermissions
+		ADDED from [:image_picker_android] C:\Projects\Visual Studio Code\care_connect\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:15:13-47
+	android:authorities
+		ADDED from [:image_picker_android] C:\Projects\Visual Studio Code\care_connect\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:13:13-74
+	android:exported
+		ADDED from [:image_picker_android] C:\Projects\Visual Studio Code\care_connect\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:14:13-37
+	android:name
+		ADDED from [:image_picker_android] C:\Projects\Visual Studio Code\care_connect\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:12:13-82
+meta-data#android.support.FILE_PROVIDER_PATHS
+ADDED from [:image_picker_android] C:\Projects\Visual Studio Code\care_connect\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:16:13-18:75
+	android:resource
+		ADDED from [:image_picker_android] C:\Projects\Visual Studio Code\care_connect\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:18:17-72
+	android:name
+		ADDED from [:image_picker_android] C:\Projects\Visual Studio Code\care_connect\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:17:17-67
+service#com.google.android.gms.metadata.ModuleDependencies
+ADDED from [:image_picker_android] C:\Projects\Visual Studio Code\care_connect\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:21:9-33:19
+	android:enabled
+		ADDED from [:image_picker_android] C:\Projects\Visual Studio Code\care_connect\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:23:13-36
+	android:exported
+		ADDED from [:image_picker_android] C:\Projects\Visual Studio Code\care_connect\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:24:13-37
+	tools:ignore
+		ADDED from [:image_picker_android] C:\Projects\Visual Studio Code\care_connect\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:25:13-40
+	android:name
+		ADDED from [:image_picker_android] C:\Projects\Visual Studio Code\care_connect\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:22:13-78
+intent-filter#action:name:com.google.android.gms.metadata.MODULE_DEPENDENCIES
+ADDED from [:image_picker_android] C:\Projects\Visual Studio Code\care_connect\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:26:13-28:29
+action#com.google.android.gms.metadata.MODULE_DEPENDENCIES
+ADDED from [:image_picker_android] C:\Projects\Visual Studio Code\care_connect\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:27:17-94
+	android:name
+		ADDED from [:image_picker_android] C:\Projects\Visual Studio Code\care_connect\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:27:25-91
+meta-data#photopicker_activity:0:required
+ADDED from [:image_picker_android] C:\Projects\Visual Studio Code\care_connect\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:30:13-32:36
+	android:value
+		ADDED from [:image_picker_android] C:\Projects\Visual Studio Code\care_connect\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:32:17-33
+	android:name
+		ADDED from [:image_picker_android] C:\Projects\Visual Studio Code\care_connect\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:31:17-63
 uses-library#androidx.window.extensions
 ADDED from [androidx.window:window:1.2.0] C:\Users\isaac\.gradle\caches\transforms-3\61b646fe49f67281254a84f48ad4fbfb\transformed\jetified-window-1.2.0\AndroidManifest.xml:23:9-25:40
 	android:required

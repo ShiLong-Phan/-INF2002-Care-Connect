@@ -823,6 +823,23 @@
                     }
                 },
                 {
+                    "source": "C:\\Users\\isaac\\.gradle\\caches\\transforms-3\\1c28da5bfd5f3a50557641a159e50821\\transformed\\jetified-activity-1.9.2\\res\\values\\values.xml",
+                    "from": {
+                        "startLines": "2,3",
+                        "startColumns": "4,4",
+                        "startOffsets": "55,97",
+                        "endColumns": "41,59",
+                        "endOffsets": "92,152"
+                    },
+                    "to": {
+                        "startLines": "122,141",
+                        "startColumns": "4,4",
+                        "startOffsets": "5922,6931",
+                        "endColumns": "41,59",
+                        "endOffsets": "5959,6986"
+                    }
+                },
+                {
                     "source": "C:\\Projects\\Visual Studio Code\\care_connect\\android\\app\\src\\main\\res\\values\\styles.xml",
                     "from": {
                         "startLines": "3,14",
@@ -873,23 +890,6 @@
                         "startOffsets": "6991",
                         "endColumns": "53",
                         "endOffsets": "7040"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\isaac\\.gradle\\caches\\transforms-3\\def63b78721e525ecde58c90680a5d60\\transformed\\jetified-activity-1.8.1\\res\\values\\values.xml",
-                    "from": {
-                        "startLines": "2,3",
-                        "startColumns": "4,4",
-                        "startOffsets": "55,97",
-                        "endColumns": "41,59",
-                        "endOffsets": "92,152"
-                    },
-                    "to": {
-                        "startLines": "122,141",
-                        "startColumns": "4,4",
-                        "startOffsets": "5922,6931",
-                        "endColumns": "41,59",
-                        "endOffsets": "5959,6986"
                     }
                 },
                 {
