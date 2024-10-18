@@ -9,9 +9,24 @@ class MedicationDetails extends StatelessWidget {
   Widget build(BuildContext context) {
     // Sample data for the list
     final List<Map<String, String>> medications = [
-      {'name': 'Aspirin', 'dosage': '100mg', 'interval': '8 hours'},
-      {'name': 'Ibuprofen', 'dosage': '200mg', 'interval': '12 hours'},
-      {'name': 'Paracetamol', 'dosage': '500mg', 'interval': '6 hours'},
+      {
+        'name': 'Aspirin',
+        'dosage': '100mg',
+        'interval': '8 hours',
+        'usage': 'Used to reduce pain, fever, or inflammation.'
+      },
+      {
+        'name': 'Ibuprofen',
+        'dosage': '200mg',
+        'interval': '12 hours',
+        'usage': 'Used to relieve pain from various conditions such as headache, dental pain, menstrual cramps, muscle aches, or arthritis.'
+      },
+      {
+        'name': 'Paracetamol',
+        'dosage': '500mg',
+        'interval': '6 hours',
+        'usage': 'Used to treat mild to moderate pain and reduce fever.'
+      },
     ];
 
     return Scaffold(
@@ -23,14 +38,34 @@ class MedicationDetails extends StatelessWidget {
               itemCount: medications.length,
               itemBuilder: (context, index) {
                 final medication = medications[index];
-                return ListTile(
-                  title: Text(medication['name']!),
-                  subtitle: Text(
-                      'Dosage: ${medication['dosage']} - Interval: ${medication['interval']}'),
-                  onTap: () {
-                    // Handle the tap event here
-                    print('Tapped on ${medication['name']}');
-                  },
+
+                // Return a Card widget for each medication
+                return Card(
+                  margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+                  child: Padding(
+                    padding: const EdgeInsets.all(15.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        // Display medication name
+                        Text(
+                          medication['name']!,
+                          style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                        ),
+                        const SizedBox(height: 5),
+                        // Display medication dosage
+                        Text('Dosage: ${medication['dosage']}'),
+                        // Display medication interval
+                        Text('Interval: ${medication['interval']}'),
+                        // Display medication usage/description with truncation
+                        Text(
+                          'Usage: ${medication['usage']}',
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ],
+                    ),
+                  ),
                 );
               },
             ),
@@ -52,6 +87,7 @@ class MedicationDetails extends StatelessWidget {
                         ),
                       ),
                       onPressed: () {
+                        // Navigate to add medication reminder screen
                         Navigator.push(
                           context,
                           MaterialPageRoute(

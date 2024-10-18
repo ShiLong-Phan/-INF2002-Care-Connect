@@ -1,3 +1,4 @@
+import 'package:care_connect/UI/appointment_details.dart';
 import 'package:care_connect/UI/medication_details.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttericon/font_awesome5_icons.dart';
@@ -90,7 +91,7 @@ class AppointmentDetailButton extends StatelessWidget
         onPressed: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => const MedicationDetails()),
+            MaterialPageRoute(builder: (context) => const AppointmentDetails()),
           );
         },
         child: const Row(mainAxisSize: MainAxisSize.min, children: [
