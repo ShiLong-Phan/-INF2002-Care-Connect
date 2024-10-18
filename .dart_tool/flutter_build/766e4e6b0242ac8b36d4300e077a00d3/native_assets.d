@@ -1,0 +1,1 @@
+ C:\\Projects\\Visual\ Studio\ Code\\care_connect\\.dart_tool\\flutter_build\\766e4e6b0242ac8b36d4300e077a00d3\\native_assets.yaml: 
