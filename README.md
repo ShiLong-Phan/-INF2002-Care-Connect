@@ -1,6 +1,6 @@
 # care_connect
 
-A new Flutter project.
+A new Flutter project for INF2002 HCI Project. App is named "Care Connect".
 
 ## Getting Started
 
@@ -9,7 +9,7 @@ This project is a starting point for a Flutter application.
 ## SDK Version
 
 - Flutter SDK: 3.3.10
-- Java SDK: 21
+- Java JDK: 21
 
 ## How to Run
 
@@ -33,6 +33,7 @@ This project is a starting point for a Flutter application.
    ```sh
    flutter build ios
 
-How to Compile
+## How to Compile
+   ```sh
    Compile the Dart code:
    dart compile exe bin/main.dart
