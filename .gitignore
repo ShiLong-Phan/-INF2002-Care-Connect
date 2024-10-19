@@ -47,4 +47,4 @@ app.*.map.json
 # Additional build directories to ignore
 /out/
 /target/
-.apk
+*.apk
