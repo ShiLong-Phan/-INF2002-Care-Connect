@@ -6,11 +6,33 @@ A new Flutter project.
 
 This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
+## SDK Version
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+- Flutter SDK: 3.3.10
+- Java SDK: 21
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## How to Run
+
+1. **Clone the repository:**
+   ```sh
+   git clone https://github.com/your-username/care_connect.git
+   cd care_connect
+
+2. **Install dependencies:**
+   ```sh
+   flutter pub get
+   flutter run
+
+## How to Build
+
+1. **Build the application for Android:**  
+    ```sh 
+   flutter build apk
+
+1. **Build the application for iOS:**
+   ```sh
+   flutter build ios
+
+How to Compile
+   Compile the Dart code:
+   dart compile exe bin/main.dart

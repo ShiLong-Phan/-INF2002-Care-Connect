@@ -1,3 +1,4 @@
+import 'package:care_connect/UI/add_appointment_reminder.dart';
 import 'package:care_connect/UI/appbar.dart';
 import 'package:flutter/material.dart';
 
@@ -68,6 +69,11 @@ class AppointmentDetails extends StatelessWidget {
                       ),
                       onPressed: () {
                         // Navigate to add appointment screen
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const AddAppointmentReminder()),
+                        );
                       },
                       child: const Text(
                         'Add Appointment',

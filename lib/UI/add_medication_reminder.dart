@@ -1,3 +1,4 @@
+import 'package:care_connect/UI/appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
@@ -13,6 +14,13 @@ class AddMedicationReminder extends StatefulWidget {
 class _AddMedicationReminderState extends State<AddMedicationReminder> {
   File? _image; // Variable to store the selected image
   TimeOfDay? _selectedTime; // Variable to store the selected time
+
+  // Controllers to handle text input for medication name, dosage, interval, description, and time
+  final TextEditingController nameController = TextEditingController();
+  final TextEditingController dosageController = TextEditingController();
+  final TextEditingController intervalController = TextEditingController();
+  final TextEditingController descriptionController = TextEditingController();
+  final TextEditingController timeController = TextEditingController();
 
   // Function to pick an image from the gallery
   Future<void> _pickImage() async {
@@ -33,6 +41,7 @@ class _AddMedicationReminderState extends State<AddMedicationReminder> {
     if (picked != null && picked != _selectedTime) {
       setState(() {
         _selectedTime = picked;
+        timeController.text = _selectedTime!.format(context);
       });
     }
   }
@@ -40,23 +49,21 @@ class _AddMedicationReminderState extends State<AddMedicationReminder> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('New Medication Reminder'),
-        backgroundColor: Colors.deepPurple,
-      ),
+      appBar: CustomAppBar(title: 'New Medication Reminder'),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             // Medication Name input field
-            const Row(
+            Row(
               children: [
-                Text('Medication\nName: '),
-                SizedBox(width: 8),
+                const Text('Medication\nName: '),
+                const SizedBox(width: 8),
                 Expanded(
                   child: TextField(
-                    decoration: InputDecoration(
+                    controller: nameController,
+                    decoration: const InputDecoration(
                       border: OutlineInputBorder(),
                       hintText: 'Enter medication name',
                     ),
@@ -66,13 +73,14 @@ class _AddMedicationReminderState extends State<AddMedicationReminder> {
             ),
             const SizedBox(height: 16),
             // Dosage input field
-            const Row(
+            Row(
               children: [
-                Text('Dosage: '),
-                SizedBox(width: 8),
+                const Text('Dosage: '),
+                const SizedBox(width: 8),
                 Expanded(
                   child: TextField(
-                    decoration: InputDecoration(
+                    controller: dosageController,
+                    decoration: const InputDecoration(
                       border: OutlineInputBorder(),
                       hintText: 'e.g. 100mg, 1 tablet, 50ml',
                     ),
@@ -84,14 +92,14 @@ class _AddMedicationReminderState extends State<AddMedicationReminder> {
             // Time input field with time picker
             Row(
               children: [
-                //Time Input field
-                const Text('Time: '),
+                const Text('Start Time: '),
                 const SizedBox(width: 8),
                 Expanded(
                   child: GestureDetector(
                     onTap: () => _selectTime(context),
                     child: AbsorbPointer(
                       child: TextField(
+                        controller: timeController,
                         decoration: InputDecoration(
                           border: const OutlineInputBorder(),
                           hintText: _selectedTime != null
@@ -112,11 +120,12 @@ class _AddMedicationReminderState extends State<AddMedicationReminder> {
                 const SizedBox(width: 8),
                 Expanded(
                   child: TextField(
+                    controller: intervalController,
                     keyboardType: TextInputType.number,
                     inputFormatters: [TimeTextInputFormatter()],
                     decoration: const InputDecoration(
                       border: OutlineInputBorder(),
-                      hintText: 'Enter interval in HH:MM max 24:00',
+                      hintText: 'HH:MM max 24:00',
                     ),
                   ),
                 ),
@@ -124,15 +133,16 @@ class _AddMedicationReminderState extends State<AddMedicationReminder> {
             ),
             const SizedBox(height: 16),
             // Description input field
-            const Row(
+            Row(
               children: [
-                Text('Description: '),
-                SizedBox(width: 8),
+                const Text('Description: '),
+                const SizedBox(width: 8),
                 Expanded(
                   child: TextField(
-                    decoration: InputDecoration(
+                    controller: descriptionController,
+                    decoration: const InputDecoration(
                       border: OutlineInputBorder(),
-                      hintText: 'Example: For Stomachache',
+                      hintText: 'For Gastric',
                     ),
                   ),
                 ),
@@ -165,11 +175,30 @@ class _AddMedicationReminderState extends State<AddMedicationReminder> {
             Center(
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                  minimumSize: const Size(200, 50),
+                  minimumSize: const Size(150, 75),
                   backgroundColor: Colors.indigo,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(35),
+                  ),
                 ),
                 onPressed: () {
                   // Handle the button press
+                  // Collect the form data
+                  final String medicationName = nameController.text;
+                  final String dosage = dosageController.text;
+                  final String interval = intervalController.text;
+                  final String description = descriptionController.text;
+                  final String time = timeController.text;
+
+                  // Print the collected data
+                  print('Medication Name: $medicationName');
+                  print('Dosage: $dosage');
+                  print('Interval: $interval');
+                  print('Description: $description');
+                  print('Time: $time');
+                  print('Image: ${_image?.path ?? 'No image selected'}');
+
+                  Navigator.pop(context);
                 },
                 child: const Text(
                   'Set Medication',
@@ -177,6 +206,7 @@ class _AddMedicationReminderState extends State<AddMedicationReminder> {
                     color: Colors.white,
                     fontSize: 18,
                   ),
+                  textAlign: TextAlign.center,
                 ),
               ),
             ),
@@ -191,18 +221,23 @@ class _AddMedicationReminderState extends State<AddMedicationReminder> {
 // Custom input formatter for time in HH:MM format
 class TimeTextInputFormatter extends TextInputFormatter {
   @override
-  TextEditingValue formatEditUpdate(TextEditingValue oldValue, TextEditingValue newValue) {
+  TextEditingValue formatEditUpdate(
+      TextEditingValue oldValue, TextEditingValue newValue) {
     final text = newValue.text;
     if (text.length == 1 && int.tryParse(text) != null && int.parse(text) > 2) {
       return oldValue;
-    } else if (text.length == 2 && int.tryParse(text) != null && int.parse(text) > 24) {
+    } else if (text.length == 2 &&
+        int.tryParse(text) != null &&
+        int.parse(text) > 24) {
       return oldValue;
     } else if (text.length == 3 && text[2] != ':') {
       return TextEditingValue(
         text: '${text.substring(0, 2)}:${text.substring(2)}',
         selection: const TextSelection.collapsed(offset: 4),
       );
-    } else if (text.length == 4 && int.tryParse(text.substring(3)) != null && int.parse(text.substring(3)) > 5) {
+    } else if (text.length == 4 &&
+        int.tryParse(text.substring(3)) != null &&
+        int.parse(text.substring(3)) > 5) {
       return oldValue;
     } else if (text.length > 5) {
       return oldValue;
