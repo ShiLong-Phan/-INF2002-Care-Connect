@@ -1,6 +1,8 @@
 import 'package:care_connect/UI/appbar.dart';
 import 'package:flutter/material.dart';
 
+import 'package:care_connect/DB/database_helper.dart';
+
 class AddAppointmentReminder extends StatefulWidget {
   const AddAppointmentReminder({super.key});
 
@@ -140,18 +142,23 @@ class _AddAppointmentReminderState extends State<AddAppointmentReminder> {
                     borderRadius: BorderRadius.circular(35),
                   ),
                 ),
-                onPressed: () {
-                  // Handle form submission
+                onPressed: () async {
+                  // Collect the form data
                   final String name = nameController.text;
                   final String location = locationController.text;
                   final String date = dateController.text;
                   final String time = timeController.text;
 
-                  // Perform necessary actions with the form data
-                  print('Name: $name, Location: $location, Date: $date, Time: $time');
+                  // Save the data to the database
+                  await DatabaseHelper().insertAppointment({
+                    'name': name,
+                    'location': location,
+                    'date': date,
+                    'time': time,
+                  });
 
                   // Navigate back to the previous screen
-                  Navigator.pop(context);
+                  Navigator.pop(context, true);
                 },
                 child: const Text(
                   'Save Appointment',

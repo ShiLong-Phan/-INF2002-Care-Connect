@@ -3,6 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:io';
+import 'package:care_connect/DB/database_helper.dart';
+
+import '../DB/database_helper.dart'; // Import the database helper
 
 class AddMedicationReminder extends StatefulWidget {
   const AddMedicationReminder({super.key});
@@ -181,24 +184,27 @@ class _AddMedicationReminderState extends State<AddMedicationReminder> {
                     borderRadius: BorderRadius.circular(35),
                   ),
                 ),
-                onPressed: () {
-                  // Handle the button press
+                onPressed: () async {
                   // Collect the form data
                   final String medicationName = nameController.text;
                   final String dosage = dosageController.text;
                   final String interval = intervalController.text;
                   final String description = descriptionController.text;
                   final String time = timeController.text;
+                  final String imagePath = _image?.path ?? '';
 
-                  // Print the collected data
-                  print('Medication Name: $medicationName');
-                  print('Dosage: $dosage');
-                  print('Interval: $interval');
-                  print('Description: $description');
-                  print('Time: $time');
-                  print('Image: ${_image?.path ?? 'No image selected'}');
+                  // Save the data to the database
+                  await DatabaseHelper().insertReminder({
+                    'name': medicationName,
+                    'dosage': dosage,
+                    'interval': interval,
+                    'description': description,
+                    'time': time,
+                    'image': imagePath,
+                  });
 
-                  Navigator.pop(context);
+                  // Navigate back to the previous screen
+                  Navigator.pop(context, true);
                 },
                 child: const Text(
                   'Set Medication',

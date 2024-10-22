@@ -43,6 +43,7 @@ app.*.map.json
 /android/app/profile
 /android/app/release
 /build/app/intermediates/
+/build
 
 # Additional build directories to ignore
 /out/

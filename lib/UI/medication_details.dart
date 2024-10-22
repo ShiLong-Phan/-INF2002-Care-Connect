@@ -1,34 +1,33 @@
-import 'package:care_connect/UI/appbar.dart';
 import 'package:care_connect/UI/add_medication_reminder.dart';
+import 'package:care_connect/UI/appbar.dart';
 import 'package:flutter/material.dart';
+import 'package:care_connect/DB/database_helper.dart';
 
-class MedicationDetails extends StatelessWidget {
+class MedicationDetails extends StatefulWidget {
   const MedicationDetails({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    // Sample data for the list
-    final List<Map<String, String>> medications = [
-      {
-        'name': 'Aspirin',
-        'dosage': '100mg',
-        'interval': '8 hours',
-        'usage': 'Used to reduce pain, fever, or inflammation.'
-      },
-      {
-        'name': 'Ibuprofen',
-        'dosage': '200mg',
-        'interval': '12 hours',
-        'usage': 'Used to relieve pain from various conditions such as headache, dental pain, menstrual cramps, muscle aches, or arthritis.'
-      },
-      {
-        'name': 'Paracetamol',
-        'dosage': '500mg',
-        'interval': '6 hours',
-        'usage': 'Used to treat mild to moderate pain and reduce fever.'
-      },
-    ];
+  _MedicationDetailsState createState() => _MedicationDetailsState();
+}
 
+class _MedicationDetailsState extends State<MedicationDetails> {
+  List<Map<String, dynamic>> medications = [];
+
+  @override
+  void initState() {
+    super.initState();
+    _loadMedications();
+  }
+
+  Future<void> _loadMedications() async {
+    final data = await DatabaseHelper().getReminders();
+    setState(() {
+      medications = data;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar(title: 'Medication Details'),
       body: Column(
@@ -39,7 +38,6 @@ class MedicationDetails extends StatelessWidget {
               itemBuilder: (context, index) {
                 final medication = medications[index];
 
-                // Return a Card widget for each medication
                 return Card(
                   margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
                   child: Padding(
@@ -47,19 +45,15 @@ class MedicationDetails extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        // Display medication name
                         Text(
-                          medication['name']!,
+                          medication['name'],
                           style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                         ),
                         const SizedBox(height: 5),
-                        // Display medication dosage
                         Text('Dosage: ${medication['dosage']}'),
-                        // Display medication interval
                         Text('Interval: ${medication['interval']}'),
-                        // Display medication usage/description with truncation
                         Text(
-                          'Usage: ${medication['usage']}',
+                          'Description: ${medication['description']}',
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
                         ),
@@ -86,13 +80,18 @@ class MedicationDetails extends StatelessWidget {
                           borderRadius: BorderRadius.circular(35),
                         ),
                       ),
-                      onPressed: () {
-                        // Navigate to add medication reminder screen
-                        Navigator.push(
+                      onPressed: () async {
+                        // Navigate to add medication screen and wait for the result
+                        final result = await Navigator.push(
                           context,
                           MaterialPageRoute(
                               builder: (context) => const AddMedicationReminder()),
                         );
+
+                        // If the result is true, refresh the medications list
+                        if (result == true) {
+                          _loadMedications();
+                        }
                       },
                       child: const Text(
                         'Add Medication Reminder',
@@ -105,7 +104,7 @@ class MedicationDetails extends StatelessWidget {
                     ),
                   ],
                 ),
-                const SizedBox(height: 20), // Add some space from the bottom
+                const SizedBox(height: 20),
               ],
             ),
           ),

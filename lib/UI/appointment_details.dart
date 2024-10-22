@@ -1,19 +1,33 @@
 import 'package:care_connect/UI/add_appointment_reminder.dart';
 import 'package:care_connect/UI/appbar.dart';
 import 'package:flutter/material.dart';
+import 'package:care_connect/DB/database_helper.dart';
 
-class AppointmentDetails extends StatelessWidget {
+class AppointmentDetails extends StatefulWidget {
   const AppointmentDetails({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    // Sample data for the list
-    final List<Map<String, String>> appointments = [
-      {'name': 'Doctor Smith', 'location': 'Clinic A', 'date': '2023-10-01', 'time': '10:00 AM'},
-      {'name': 'Dentist John', 'location': 'Dental Care', 'date': '2023-10-05', 'time': '02:00 PM'},
-      {'name': 'Therapist Jane', 'location': 'Wellness Center', 'date': '2023-10-10', 'time': '11:00 AM'},
-    ];
+  _AppointmentDetailsState createState() => _AppointmentDetailsState();
+}
 
+class _AppointmentDetailsState extends State<AppointmentDetails> {
+  List<Map<String, dynamic>> appointments = [];
+
+  @override
+  void initState() {
+    super.initState();
+    _loadAppointments();
+  }
+
+  Future<void> _loadAppointments() async {
+    final data = await DatabaseHelper().getAppointments();
+    setState(() {
+      appointments = data;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar(title: 'Appointment Details'),
       body: Column(
@@ -34,7 +48,7 @@ class AppointmentDetails extends StatelessWidget {
                       children: [
                         // Display appointment name
                         Text(
-                          appointment['name']!,
+                          appointment['name'],
                           style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                         ),
                         const SizedBox(height: 5),
@@ -67,13 +81,18 @@ class AppointmentDetails extends StatelessWidget {
                           borderRadius: BorderRadius.circular(35),
                         ),
                       ),
-                      onPressed: () {
-                        // Navigate to add appointment screen
-                        Navigator.push(
+                      onPressed: () async {
+                        // Navigate to add appointment screen and wait for the result
+                        final result = await Navigator.push(
                           context,
                           MaterialPageRoute(
                               builder: (context) => const AddAppointmentReminder()),
                         );
+
+                        // If the result is true, refresh the appointments list
+                        if (result == true) {
+                          _loadAppointments();
+                        }
                       },
                       child: const Text(
                         'Add Appointment',
