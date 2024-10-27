@@ -38,26 +38,40 @@ class _MedicationDetailsState extends State<MedicationDetails> {
               itemBuilder: (context, index) {
                 final medication = medications[index];
 
-                return Card(
-                  margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
-                  child: Padding(
-                    padding: const EdgeInsets.all(15.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          medication['name'],
-                          style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                        ),
-                        const SizedBox(height: 5),
-                        Text('Dosage: ${medication['dosage']}'),
-                        Text('Interval: ${medication['interval']}'),
-                        Text(
-                          'Description: ${medication['description']}',
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                      ],
+                return GestureDetector(
+                  onTap: () async {
+                    final result = await Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => AddMedicationReminder(reminder: medication),
+                      ),
+                    );
+
+                    if (result == true) {
+                      _loadMedications();
+                    }
+                  },
+                  child: Card(
+                    margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+                    child: Padding(
+                      padding: const EdgeInsets.all(15.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            medication['name'],
+                            style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                          ),
+                          const SizedBox(height: 5),
+                          Text('Dosage: ${medication['dosage']}'),
+                          Text('Interval: ${medication['interval']}'),
+                          Text(
+                            'Description: ${medication['description']}',
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 );
@@ -81,14 +95,13 @@ class _MedicationDetailsState extends State<MedicationDetails> {
                         ),
                       ),
                       onPressed: () async {
-                        // Navigate to add medication screen and wait for the result
                         final result = await Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => const AddMedicationReminder()),
+                            builder: (context) => const AddMedicationReminder(),
+                          ),
                         );
 
-                        // If the result is true, refresh the medications list
                         if (result == true) {
                           _loadMedications();
                         }

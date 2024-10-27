@@ -10,6 +10,8 @@ This project is a starting point for a Flutter application.
 
 - Flutter SDK: 3.3.10
 - Java JDK: 21
+- Dart SDK: Included with flutter sdk under flutter/bin/cache/dart-sdk/
+- remember to accept licenses for android sdk with flutter doctor --android-licenses
 
 ## How to Run
 
@@ -34,6 +36,11 @@ This project is a starting point for a Flutter application.
    flutter build ios
 
 ## How to Compile
-   ```sh
    Compile the Dart code:
    dart compile exe bin/main.dart
+
+## How to Compile
+   If you encounter any issues with running flutter doctor
+   ```sh flutter doctor```
+   Try deleting the flutter/bin/cache folder (this will remove dart sdk too)
+   Then run flutter doctor again to download the sdk again and check if the issue is resolved

@@ -2,6 +2,8 @@ import 'package:care_connect/UI/add_appointment_reminder.dart';
 import 'package:care_connect/UI/appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:care_connect/DB/database_helper.dart';
+import 'package:alarm/alarm.dart'; // Import for AlarmSettings
+import 'package:intl/intl.dart'; // Import for DateFormat
 
 class AppointmentDetails extends StatefulWidget {
   const AppointmentDetails({super.key});
@@ -38,27 +40,38 @@ class _AppointmentDetailsState extends State<AppointmentDetails> {
               itemBuilder: (context, index) {
                 final appointment = appointments[index];
 
-                // Return a Card widget for each appointment
-                return Card(
-                  margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
-                  child: Padding(
-                    padding: const EdgeInsets.all(15.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        // Display appointment name
-                        Text(
-                          appointment['name'],
-                          style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                        ),
-                        const SizedBox(height: 5),
-                        // Display appointment location
-                        Text('Location: ${appointment['location']}'),
-                        // Display appointment date
-                        Text('Date: ${appointment['date']}'),
-                        // Display appointment time
-                        Text('Time: ${appointment['time']}'),
-                      ],
+                return GestureDetector(
+                  onTap: () async {
+                    // Navigate to add appointment screen with appointment data
+                    final result = await Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => AddAppointmentReminder(appointment: appointment),
+                      ),
+                    );
+
+                    // If the result is true, refresh the appointments list
+                    if (result == true) {
+                      _loadAppointments();
+                    }
+                  },
+                  child: Card(
+                    margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+                    child: Padding(
+                      padding: const EdgeInsets.all(15.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            appointment['name'],
+                            style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                          ),
+                          const SizedBox(height: 5),
+                          Text('Location: ${appointment['location']}'),
+                          Text('Date: ${appointment['date']}'),
+                          Text('Time: ${appointment['time']}'),
+                        ],
+                      ),
                     ),
                   ),
                 );
@@ -113,4 +126,19 @@ class _AppointmentDetailsState extends State<AppointmentDetails> {
       ),
     );
   }
+}
+
+Future<void> addAlarmEntry(AlarmSettings alarmSettings, bool manuallyTurnedOff) async {
+  final dbHelper = DatabaseHelper();
+  final DateFormat timeFormat = DateFormat('hh:mm a'); // 12-hour format with AM/PM
+  final alarmEntry = {
+    'id': alarmSettings.id,
+    'title': alarmSettings.notificationSettings.title,
+    'type': 'alarm', // Assuming type is 'alarm' for this example
+    'time': timeFormat.format(alarmSettings.dateTime), // Format time to 12-hour clock
+    'date': alarmSettings.dateTime.toIso8601String().split('T')[0], // Extract date part
+    'manuallyTurnedOff': manuallyTurnedOff ? true : false, // Store as integer (1 for true, 0 for false)
+  };
+  await dbHelper.insertAlarmEntry(alarmEntry);
+  print('Alarm entry added: $alarmEntry'); // Debugging statement
 }

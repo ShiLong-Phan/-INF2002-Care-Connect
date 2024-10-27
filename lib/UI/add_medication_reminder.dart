@@ -4,28 +4,40 @@ import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:io';
 import 'package:care_connect/DB/database_helper.dart';
-
-import '../DB/database_helper.dart'; // Import the database helper
+import 'package:alarm/alarm.dart';
 
 class AddMedicationReminder extends StatefulWidget {
-  const AddMedicationReminder({super.key});
+  final Map<String, dynamic>? reminder;
+
+  const AddMedicationReminder({super.key, this.reminder});
 
   @override
   _AddMedicationReminderState createState() => _AddMedicationReminderState();
 }
 
 class _AddMedicationReminderState extends State<AddMedicationReminder> {
-  File? _image; // Variable to store the selected image
-  TimeOfDay? _selectedTime; // Variable to store the selected time
+  File? _image;
+  TimeOfDay? _selectedTime;
 
-  // Controllers to handle text input for medication name, dosage, interval, description, and time
-  final TextEditingController nameController = TextEditingController();
-  final TextEditingController dosageController = TextEditingController();
-  final TextEditingController intervalController = TextEditingController();
-  final TextEditingController descriptionController = TextEditingController();
-  final TextEditingController timeController = TextEditingController();
+  late TextEditingController nameController;
+  late TextEditingController dosageController;
+  late TextEditingController intervalController;
+  late TextEditingController descriptionController;
+  late TextEditingController timeController;
 
-  // Function to pick an image from the gallery
+  @override
+  void initState() {
+    super.initState();
+    nameController = TextEditingController(text: widget.reminder?['name'] ?? '');
+    dosageController = TextEditingController(text: widget.reminder?['dosage'] ?? '');
+    intervalController = TextEditingController(text: widget.reminder?['interval'] ?? '');
+    descriptionController = TextEditingController(text: widget.reminder?['description'] ?? '');
+    timeController = TextEditingController(text: widget.reminder?['time'] ?? '');
+    if (widget.reminder?['image'] != null) {
+      _image = File(widget.reminder!['image']);
+    }
+  }
+
   Future<void> _pickImage() async {
     final pickedFile = await ImagePicker().pickImage(source: ImageSource.gallery);
     if (pickedFile != null) {
@@ -35,7 +47,6 @@ class _AddMedicationReminderState extends State<AddMedicationReminder> {
     }
   }
 
-  // Function to show the time picker dialog and set the selected time
   Future<void> _selectTime(BuildContext context) async {
     final TimeOfDay? picked = await showTimePicker(
       context: context,
@@ -49,16 +60,118 @@ class _AddMedicationReminderState extends State<AddMedicationReminder> {
     }
   }
 
+  Future<void> _deleteReminder() async {
+    if (widget.reminder != null) {
+      await DatabaseHelper().deleteReminder(widget.reminder!['id']);
+      await Alarm.stop(widget.reminder!['id']);
+      Navigator.pop(context, true);
+    }
+  }
+
+  Future<void> _updateReminder() async {
+    final String medicationName = nameController.text;
+    final String dosage = dosageController.text;
+    final String interval = intervalController.text;
+    final String description = descriptionController.text;
+    final String time = timeController.text;
+    final String imagePath = _image?.path ?? '';
+
+    final reminderData = {
+      'name': medicationName,
+      'dosage': dosage,
+      'interval': interval,
+      'description': description,
+      'time': time,
+      'image': imagePath,
+    };
+
+    String body = 'Type: Medication\nDosage: $dosage\nInterval: $interval\nDescription: $description';
+    String formattedTime = convertTo24HourFormat(time);
+    String formattedDate = DateTime.now().toString().split(' ')[0] + "T" + formattedTime + ":00";
+    DateTime setDateTime = DateTime.parse(formattedDate);
+
+    if (widget.reminder != null) {
+      reminderData['id'] = widget.reminder!['id'].toString();
+      await DatabaseHelper().updateReminder(reminderData);
+      await Alarm.stop(widget.reminder!['id']);
+      await Alarm.set(alarmSettings: AlarmSettings(
+        id: widget.reminder!['id'],
+        dateTime: setDateTime,
+        assetAudioPath: 'assets/alarm.mp3',
+        loopAudio: true,
+        vibrate: true,
+        volume: 0.8,
+        fadeDuration: 3.0,
+        notificationSettings: NotificationSettings(
+            icon: 'mipmap/ic_launcher',
+            title: medicationName,
+            body: body,
+            stopButton: ('Stop Alarm')
+        ),
+      ));
+    } else {
+      final id = await DatabaseHelper().insertReminder(reminderData);
+      await Alarm.set(alarmSettings: AlarmSettings(
+        id: id,
+        dateTime: setDateTime,
+        assetAudioPath: 'assets/alarm.mp3',
+        loopAudio: true,
+        vibrate: true,
+        volume: 0.8,
+        fadeDuration: 3.0,
+        notificationSettings: NotificationSettings(
+            icon: 'mipmap/ic_launcher',
+            title: medicationName,
+            body: body,
+            stopButton: ('Stop Alarm')
+        ),
+      ));
+    }
+
+    Navigator.pop(context, true);
+  }
+
+  Future<void> _showConfirmationDialog(String action) async {
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: false,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Confirm $action'),
+          content: Text('Are you sure you want to $action this reminder?'),
+          actions: <Widget>[
+            TextButton(
+              child: const Text('Cancel'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+            TextButton(
+              child: const Text('Confirm'),
+              onPressed: () {
+                Navigator.of(context).pop();
+                if (action == 'delete') {
+                  _deleteReminder();
+                } else {
+                  _updateReminder();
+                }
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(title: 'New Medication Reminder'),
+      appBar: CustomAppBar(title: 'Medication Details'),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Medication Name input field
             Row(
               children: [
                 const Text('Medication\nName: '),
@@ -75,7 +188,6 @@ class _AddMedicationReminderState extends State<AddMedicationReminder> {
               ],
             ),
             const SizedBox(height: 16),
-            // Dosage input field
             Row(
               children: [
                 const Text('Dosage: '),
@@ -92,7 +204,6 @@ class _AddMedicationReminderState extends State<AddMedicationReminder> {
               ],
             ),
             const SizedBox(height: 16),
-            // Time input field with time picker
             Row(
               children: [
                 const Text('Start Time: '),
@@ -116,7 +227,6 @@ class _AddMedicationReminderState extends State<AddMedicationReminder> {
               ],
             ),
             const SizedBox(height: 16),
-            // Interval input field with custom formatter
             Row(
               children: [
                 const Text('Interval: '),
@@ -135,7 +245,6 @@ class _AddMedicationReminderState extends State<AddMedicationReminder> {
               ],
             ),
             const SizedBox(height: 16),
-            // Description input field
             Row(
               children: [
                 const Text('Description: '),
@@ -152,7 +261,6 @@ class _AddMedicationReminderState extends State<AddMedicationReminder> {
               ],
             ),
             const SizedBox(height: 16),
-            // Image picker
             Row(
               children: [
                 const Text('Image: '),
@@ -174,47 +282,49 @@ class _AddMedicationReminderState extends State<AddMedicationReminder> {
               ],
             ),
             const Spacer(),
-            // Set Medication button
-            Center(
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  minimumSize: const Size(150, 75),
-                  backgroundColor: Colors.indigo,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(35),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    minimumSize: const Size(140, 60),
+                    backgroundColor: Colors.indigo,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(35),
+                    ),
+                  ),
+                  onPressed: () => _showConfirmationDialog(widget.reminder != null ? 'update' : 'set'),
+                  child: Text(
+                    widget.reminder != null ? 'Update Medication' : 'Set Medication',
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 18,
+                    ),
+                    textAlign: TextAlign.center,
                   ),
                 ),
-                onPressed: () async {
-                  // Collect the form data
-                  final String medicationName = nameController.text;
-                  final String dosage = dosageController.text;
-                  final String interval = intervalController.text;
-                  final String description = descriptionController.text;
-                  final String time = timeController.text;
-                  final String imagePath = _image?.path ?? '';
-
-                  // Save the data to the database
-                  await DatabaseHelper().insertReminder({
-                    'name': medicationName,
-                    'dosage': dosage,
-                    'interval': interval,
-                    'description': description,
-                    'time': time,
-                    'image': imagePath,
-                  });
-
-                  // Navigate back to the previous screen
-                  Navigator.pop(context, true);
-                },
-                child: const Text(
-                  'Set Medication',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 18,
+                if (widget.reminder != null)
+                  const SizedBox(width: 10), // Add space between buttons
+                if (widget.reminder != null)
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      minimumSize: const Size(140, 60),
+                      backgroundColor: Colors.red,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(35),
+                      ),
+                    ),
+                    onPressed: () => _showConfirmationDialog('delete'),
+                    child: const Text(
+                      'Delete Medication',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 18,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
                   ),
-                  textAlign: TextAlign.center,
-                ),
-              ),
+              ],
             ),
             const SizedBox(height: 20),
           ],
@@ -224,7 +334,27 @@ class _AddMedicationReminderState extends State<AddMedicationReminder> {
   }
 }
 
-// Custom input formatter for time in HH:MM format
+String convertTo24HourFormat(String time12h) {
+  final RegExp timeRegExp = RegExp(r'(\d+):(\d+) (\w+)');
+  final Match? match = timeRegExp.firstMatch(time12h);
+
+  if (match != null) {
+    int hour = int.parse(match.group(1)!);
+    final int minute = int.parse(match.group(2)!);
+    final String period = match.group(3)!.toUpperCase();
+
+    if (period == 'PM' && hour != 12) {
+      hour += 12;
+    } else if (period == 'AM' && hour == 12) {
+      hour = 0;
+    }
+
+    return '${hour.toString().padLeft(2, '0')}:${minute.toString().padLeft(2, '0')}';
+  }
+
+  throw FormatException('Invalid time format');
+}
+
 class TimeTextInputFormatter extends TextInputFormatter {
   @override
   TextEditingValue formatEditUpdate(
