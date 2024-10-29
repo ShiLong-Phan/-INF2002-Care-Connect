@@ -287,7 +287,7 @@ class _AddMedicationReminderState extends State<AddMedicationReminder> {
               children: [
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                    minimumSize: const Size(140, 60),
+                    minimumSize: const Size(160, 60), // Increased width from 140 to 160
                     backgroundColor: Colors.indigo,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(35),
@@ -295,7 +295,7 @@ class _AddMedicationReminderState extends State<AddMedicationReminder> {
                   ),
                   onPressed: () => _showConfirmationDialog(widget.reminder != null ? 'update' : 'set'),
                   child: Text(
-                    widget.reminder != null ? 'Update Medication' : 'Set Medication',
+                    widget.reminder != null ? 'Update\nMedication' : 'Set Medication',
                     style: const TextStyle(
                       color: Colors.white,
                       fontSize: 18,
@@ -308,7 +308,7 @@ class _AddMedicationReminderState extends State<AddMedicationReminder> {
                 if (widget.reminder != null)
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                      minimumSize: const Size(140, 60),
+                      minimumSize: const Size(160, 60), // Increased width from 140 to 160
                       backgroundColor: Colors.red,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(35),
@@ -316,7 +316,7 @@ class _AddMedicationReminderState extends State<AddMedicationReminder> {
                     ),
                     onPressed: () => _showConfirmationDialog('delete'),
                     child: const Text(
-                      'Delete Medication',
+                      'Delete\nMedication',
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 18,
