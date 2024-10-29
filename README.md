@@ -39,7 +39,7 @@ This project is a starting point for a Flutter application.
    Compile the Dart code:
    dart compile exe bin/main.dart
 
-## How to Compile
+## Issues
    If you encounter any issues with running flutter doctor
    ```sh flutter doctor```
    Try deleting the flutter/bin/cache folder (this will remove dart sdk too)
