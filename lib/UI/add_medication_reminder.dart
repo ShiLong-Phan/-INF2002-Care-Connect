@@ -360,24 +360,28 @@ class TimeTextInputFormatter extends TextInputFormatter {
   TextEditingValue formatEditUpdate(
       TextEditingValue oldValue, TextEditingValue newValue) {
     final text = newValue.text;
-    if (text.length == 1 && int.tryParse(text) != null && int.parse(text) > 2) {
+
+    // Remove any non-numeric characters except for the colon
+    final filteredText = text.replaceAll(RegExp(r'[^0-9:]'), '');
+
+    if (filteredText.length == 1 && int.tryParse(filteredText) != null && int.parse(filteredText) > 2) {
       return oldValue;
-    } else if (text.length == 2 &&
-        int.tryParse(text) != null &&
-        int.parse(text) > 24) {
+    } else if (filteredText.length == 2 &&
+        int.tryParse(filteredText) != null &&
+        int.parse(filteredText) > 24) {
       return oldValue;
-    } else if (text.length == 3 && text[2] != ':') {
+    } else if (filteredText.length == 3 && filteredText[2] != ':') {
       return TextEditingValue(
-        text: '${text.substring(0, 2)}:${text.substring(2)}',
+        text: '${filteredText.substring(0, 2)}:${filteredText.substring(2)}',
         selection: const TextSelection.collapsed(offset: 4),
       );
-    } else if (text.length == 4 &&
-        int.tryParse(text.substring(3)) != null &&
-        int.parse(text.substring(3)) > 5) {
+    } else if (filteredText.length == 4 &&
+        int.tryParse(filteredText.substring(3)) != null &&
+        int.parse(filteredText.substring(3)) > 5) {
       return oldValue;
-    } else if (text.length > 5) {
+    } else if (filteredText.length > 5) {
       return oldValue;
     }
-    return newValue;
+    return newValue.copyWith(text: filteredText);
   }
 }
